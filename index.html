@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Xác Minh Client</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #0a0a0a;
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    /* Nút bấm */
+    #updateBtn {
+        padding: 20px 35px;
+        font-size: 20px;
+        color: white;
+        background: rgba(255, 0, 60, 0.3);
+        border: 2px solid #ff003c;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.25s;
+        box-shadow: 0 0 12px #ff003c;
+    }
+
+    #updateBtn:hover {
+        background: rgba(255, 0, 60, 0.6);
+        box-shadow: 0 0 20px #ff003c;
+    }
+
+    /* Vòng tròn loading */
+    .loader {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 0, 60, 0.2);
+        border-top: 6px solid #ff003c;
+        animation: spin 1s linear infinite;
+        margin: auto;
+        display: none;
+        box-shadow: 0 0 20px #ff003c;
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .statusText {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #ff003c;
+        text-shadow: 0 0 10px #ff003c;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <button id="updateBtn">BẤM VÀO ĐÂY ĐỂ CẬP NHẬT VERSION CLIENT CỦA BẠN !</button>
+
+    <div class="loader" id="loader"></div>
+    <div class="statusText" id="statusText">ĐANG KIỂM TRA CLIENT CỦA BẠN...</div>
+    <div class="statusText" id="finalText"></div>
+</div>
+
+<script>
+    const btn = document.getElementById("updateBtn");
+    const loader = document.getElementById("loader");
+    const statusText = document.getElementById("statusText");
+    const finalText = document.getElementById("finalText");
+
+    btn.addEventListener("click", () => {
+        btn.style.display = "none";
+        loader.style.display = "block";
+        statusText.style.display = "block";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+            statusText.style.display = "none";
+
+            finalText.style.display = "block";
+            finalText.textContent = 
+                "CLIENT CỦA BẠN ĐANG Ở VERSION 2.701 — VẪN CÒN CÓ THỂ DÙNG ĐƯỢC !";
+        }, 5000);
+    });
+</script>
+
+</body>
+</html>
